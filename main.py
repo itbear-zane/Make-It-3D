@@ -35,6 +35,7 @@ if __name__ == '__main__':
 
     ### training options
     parser.add_argument('--iters', type=int, default=10000, help="training iters")
+    parser.add_argument('--warm_iters', type=int, default=100, help="training warm_iters")
     parser.add_argument('--refine_iters', type=int, default=3000, help="refine iters")
     parser.add_argument('--lr', type=float, default=1e-3, help="max learning rate")
     parser.add_argument('--min_lr', type=float, default=1e-4, help="minimal learning rate")
@@ -92,6 +93,8 @@ if __name__ == '__main__':
     parser.add_argument('--max_depth', type=float, default=10.0, help="farthest depth")
     
     opt = parser.parse_args()
+    # 2.0 None [0.2, 0.6]
+    # print(opt.sd_version, opt.hf_key, opt.step_range)
     opt.cuda_ray = True
     optDict = opt.__dict__
     opt.workspace = os.path.join('results', opt.workspace)
@@ -111,7 +114,7 @@ if __name__ == '__main__':
     # load depth network
     net_w = net_h = 384
     depth_model = DPTDepthModel(
-        path="dpt_weights/dpt_hybrid-midas-501f0c75.pt",
+        path="/public/home/CS271/junxiong.zhang-cs271/Make-It-3D/DPT/dpt_weights/dpt_hybrid-midas-501f0c75.pt",
         backbone="vitb_rn50_384",
         non_negative=True,
         enable_attention_hooks=False,

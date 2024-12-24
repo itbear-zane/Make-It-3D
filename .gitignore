@@ -1,1 +1,7 @@
 /__pycache__/*
+results/*
+raymarching/*
+log/*
+depends/*
+demo.py
+nerf/__pycache__/*

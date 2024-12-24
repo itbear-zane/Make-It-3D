@@ -2,7 +2,7 @@ import os
 import math
 import cv2
 import trimesh
-import open3d as o3d
+# import open3d as o3d
 import numpy as np
 
 import torch
@@ -87,12 +87,12 @@ def plot_pointcloud(pc, color=None):
     sphere = trimesh.creation.icosphere(radius=1)
     trimesh.Scene([pc, axes, sphere]).show()
 
-def save_pointcloud(save_dir, points, rgb=None):
-    pcd = o3d.geometry.PointCloud()
-    pcd.points = o3d.utility.Vector3dVector(points)
-    if rgb is not None:
-        pcd.colors = o3d.utility.Vector3dVector(rgb)
-    o3d.io.write_point_cloud(save_dir, pcd, write_ascii=True)
+# def save_pointcloud(save_dir, points, rgb=None):
+#     pcd = o3d.geometry.PointCloud()
+#     pcd.points = o3d.utility.Vector3dVector(points)
+#     if rgb is not None:
+#         pcd.colors = o3d.utility.Vector3dVector(rgb)
+#     o3d.io.write_point_cloud(save_dir, pcd, write_ascii=True)
 
 
 
